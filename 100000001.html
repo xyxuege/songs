@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
-<title>唱你唱过的歌 · 歌词页</title>
+<title>廊桥遗梦 · 歌词页</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -55,25 +55,36 @@
   .moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 70% 62%, rgba(160,130,80,.20) 0 9px, transparent 10px),radial-gradient(circle at 30% 70%, rgba(160,130,80,.16) 0 6px, transparent 7px)}
   .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-image:radial-gradient(rgba(255,255,255,.9) .5px, transparent .6px);background-size:3px 3px;mix-blend-mode:overlay}
 
-  /* reading progress */
+  /* playback progress (top) */
   #progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:50;background:linear-gradient(90deg,var(--rose-deep),var(--gold));box-shadow:0 0 12px rgba(255,92,143,.8)}
 
   .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 20px 30px}
 
   /* ---------- hero ---------- */
-  .hero{padding:64px 0 8px;text-align:center}
+  .hero{padding:24px 0 0;text-align:center}
   .kicker{
     display:inline-flex;align-items:center;gap:12px;
     font-family:Georgia,serif;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose);
   }
   .kicker::before,.kicker::after{content:"";width:38px;height:1px;background:linear-gradient(90deg,transparent,var(--rose));display:inline-block}
   .kicker::after{background:linear-gradient(90deg,var(--rose),transparent)}
-  h1{
-    margin:20px 0 0;font-family:"Ma Shan Zheng","Noto Serif SC",serif;font-weight:400;
-    font-size:clamp(52px,10.5vw,104px);line-height:1.08;letter-spacing:.06em;color:#fff;
-    text-shadow:0 0 18px rgba(255,120,165,.55),0 0 55px rgba(255,92,143,.35),0 4px 24px rgba(0,0,0,.7);
+  .thoughts{
+    position:relative;
+    width:90%;margin:14px auto 0;padding:13px 18px 14px;
+    text-align:left;
+    font-size:clamp(13px,2vw,14.5px);line-height:1.65;letter-spacing:.05em;color:#0e3a66;
+    background:#ffffff;
+    border:1px solid rgba(20,70,120,.5);border-radius:14px;
+    box-shadow:0 14px 34px rgba(0,0,0,.35), inset 0 0 26px rgba(20,70,120,.06);
+    backdrop-filter:blur(10px);
+    white-space:pre-line;
   }
-  h1 .accent{color:var(--rose-soft);text-shadow:0 0 18px rgba(255,143,179,.9),0 0 60px rgba(255,92,143,.5)}
+  .thoughts::before,.thoughts::after{
+    content:"";position:absolute;width:20px;height:20px;pointer-events:none;
+    border:0 solid #144a7a;opacity:.9;
+  }
+  .thoughts::before{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px;border-top-left-radius:14px}
+  .thoughts::after{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px;border-bottom-right-radius:14px}
   .subtitle{
     margin:20px auto 0;max-width:640px;font-size:clamp(14px,2.6vw,17px);letter-spacing:.22em;color:#f0c3d2;line-height:1.9;
   }
@@ -83,15 +94,51 @@
     font-family:"Noto Sans SC",sans-serif;font-size:13px;letter-spacing:.32em;color:#f3d7e1;background:rgba(14,9,26,.45);
   }
 
+
+  /* ---------- sunset bridge & river scene ---------- */
+  .sky{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(180deg,#221d47 0%,#46305f 24%,#7c4470 42%,#bd5a78 56%,#ea8663 68%,#f8ae66 76%,#fbc97e 84%,#f9d99a 100%);
+  }
+  .cloud{position:absolute;border-radius:50%;filter:blur(18px);pointer-events:none;will-change:transform}
+  .cloud.c1{width:44vw;height:9vh;left:-6vw;top:9vh;background:radial-gradient(ellipse at center,rgba(255,170,150,.5),transparent 70%);animation:cloudDrift 52s ease-in-out infinite alternate}
+  .cloud.c2{width:36vw;height:8vh;right:-4vw;top:20vh;background:radial-gradient(ellipse at center,rgba(255,140,160,.42),transparent 70%);animation:cloudDrift 64s ease-in-out infinite alternate-reverse}
+  .cloud.c3{width:28vw;height:6vh;left:16vw;top:31vh;background:radial-gradient(ellipse at center,rgba(255,205,150,.4),transparent 70%);animation:cloudDrift 44s ease-in-out infinite alternate}
+  @keyframes cloudDrift{from{transform:translateX(0)}to{transform:translateX(4.5vw)}}
+  .sun{
+    position:fixed;left:50%;bottom:calc(26vh - 36px);transform:translateX(-50%);
+    width:96px;height:96px;border-radius:50%;z-index:0;pointer-events:none;
+    background:radial-gradient(circle at 50% 42%,#fff6cf,#ffdc8f 52%,#ffae62 88%);
+    box-shadow:0 0 44px 16px rgba(255,196,110,.5),0 0 130px 60px rgba(255,160,90,.22);
+  }
+  .bridge{position:fixed;left:50%;bottom:calc(26vh - 8px);transform:translateX(-50%);width:min(980px,98vw);z-index:0;pointer-events:none}
+  .water{
+    position:fixed;left:0;right:0;bottom:0;height:26vh;z-index:0;pointer-events:none;overflow:hidden;
+    background:linear-gradient(180deg,#c97a63 0%,#7c5570 22%,#44557f 52%,#27365e 100%);
+  }
+  .water::before{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg,rgba(255,220,170,.10) 0 2px,transparent 2px 9px,rgba(160,200,255,.05) 9px 10px,transparent 10px 17px);
+    animation:shimmer 7s linear infinite;
+  }
+  @keyframes shimmer{from{background-position:0 0}to{background-position:0 34px}}
+  .water::after{
+    content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:150px;height:100%;
+    background:linear-gradient(180deg,rgba(255,205,130,.4),rgba(255,180,110,.10) 55%,transparent 92%);
+    filter:blur(7px);animation:sunpath 5.5s ease-in-out infinite alternate;
+  }
+  @keyframes sunpath{from{opacity:.65}to{opacity:1}}
+
   /* ---------- stage: vinyl + player ---------- */
   .stage{
-    margin:46px auto 0;max-width:880px;
-    display:grid;grid-template-columns:300px 1fr;gap:38px;align-items:center;
+    margin:24px auto 0;max-width:880px;
     background:var(--card);border:1px solid var(--card-border);border-radius:24px;
-    padding:34px 36px;backdrop-filter:blur(14px);
+    padding:22px 30px 16px;backdrop-filter:blur(14px);
     box-shadow:0 30px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
   }
-  .vinyl-wrap{position:relative;width:280px;height:280px;margin:0 auto}
+  .stage-main{display:grid;grid-template-columns:222px 1fr;gap:28px;align-items:center}
+  .vinyl-wrap{position:relative;width:208px;height:208px;margin:0 auto}
   .vinyl-glow{position:absolute;inset:-16px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,143,.32),transparent 68%);animation:pulse 3.6s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
   .vinyl{
@@ -107,29 +154,33 @@
     background:conic-gradient(from 210deg, transparent 0deg, rgba(255,255,255,.14) 18deg, transparent 42deg, transparent 180deg, rgba(255,200,220,.10) 200deg, transparent 224deg);
   }
   .vinyl-label{
-    position:absolute;top:50%;left:50%;width:104px;height:104px;transform:translate(-50%,-50%);border-radius:50%;
+    position:absolute;top:50%;left:50%;width:78px;height:78px;transform:translate(-50%,-50%);border-radius:50%;
     background:radial-gradient(circle at 38% 32%, #ff9ebb, #e14e7e 58%, #a92c52);
     box-shadow:inset 0 0 0 2px rgba(255,255,255,.22), 0 0 24px rgba(255,92,143,.45);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;
   }
-  .vinyl-label span{font-family:"Ma Shan Zheng",serif;font-size:15px;line-height:1.35;color:#fff;letter-spacing:.08em;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+  .vinyl-label span{font-family:"Ma Shan Zheng",serif;font-size:12px;line-height:1.35;color:#fff;letter-spacing:.08em;text-shadow:0 1px 4px rgba(0,0,0,.4)}
   .vinyl-label small{font-family:"Noto Sans SC",sans-serif;font-size:8px;letter-spacing:.28em;color:rgba(255,255,255,.85);margin-top:4px}
   .vinyl-hole{position:absolute;top:50%;left:50%;width:14px;height:14px;transform:translate(-50%,-50%);border-radius:50%;background:#0b0b14;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
   @keyframes spin{to{transform:rotate(360deg)}}
   .tonearm{
-    position:absolute;top:-8px;right:6px;width:110px;height:110px;transform-origin:88px 14px;transform:rotate(-24deg);
+    position:absolute;top:-6px;right:4px;width:86px;height:86px;transform-origin:69px 11px;transform:rotate(-24deg);
     transition:transform 1s cubic-bezier(.6,0,.2,1);z-index:3;pointer-events:none;
   }
   body.is-playing .tonearm{transform:rotate(6deg)}
   .tonearm svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))}
 
   .player{min-width:0;text-align:left}
-  .player .now{font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.34em;color:var(--cyan)}
-  .player h2{margin:10px 0 4px;font-size:26px;font-weight:900;letter-spacing:.1em;color:#fff}
+  .player h2{
+    margin:0 0 4px;font-family:"Ma Shan Zheng","Noto Serif SC",serif;font-weight:400;
+    font-size:clamp(29px,4.4vw,36px);line-height:1.15;letter-spacing:.12em;color:#fff;
+    text-shadow:0 0 16px rgba(255,120,165,.45),0 0 44px rgba(255,92,143,.28),0 2px 12px rgba(0,0,0,.6);
+  }
+  .player h2 .accent{color:var(--rose-soft)}
   .player .by{font-family:"Noto Sans SC",sans-serif;font-size:13px;color:var(--ink-dim);letter-spacing:.14em}
-  .controls{display:flex;align-items:center;gap:16px;margin-top:22px}
+  .controls{display:flex;align-items:center;gap:14px;margin-top:13px}
   .play-btn{
-    width:58px;height:58px;flex:0 0 58px;border-radius:50%;border:1px solid rgba(255,170,200,.55);cursor:pointer;
+    width:50px;height:50px;flex:0 0 50px;border-radius:50%;border:1px solid rgba(255,170,200,.55);cursor:pointer;
     background:radial-gradient(circle at 32% 28%, #ff9ebb, #e14e7e 62%, #b02a54);color:#fff;
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 10px 28px rgba(225,78,126,.45), inset 0 1px 0 rgba(255,255,255,.4);
@@ -142,57 +193,46 @@
   body.is-playing .play-btn .icon-play{display:none}
   body.is-playing .play-btn .icon-pause{display:block}
   .track-meta{flex:1;min-width:0}
-  .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.13);overflow:hidden}
-  .bar i{display:block;height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--rose-deep),var(--gold));transition:width .3s linear}
-  body.is-playing .bar i{animation:fill 30s linear forwards}
-  @keyframes fill{from{width:0%}to{width:100%}}
+  .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.13);overflow:hidden;cursor:pointer}
+  .bar i{display:block;height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--rose-deep),var(--gold))}
   .times{display:flex;justify-content:space-between;margin-top:7px;font-family:"Noto Sans SC",sans-serif;font-size:11px;color:var(--ink-faint);letter-spacing:.08em}
-  .eq{display:flex;align-items:flex-end;gap:3px;height:22px;margin-top:16px}
+  .eq{display:flex;align-items:flex-end;gap:3px;height:15px;margin-top:9px}
   .eq i{width:4px;border-radius:2px;background:linear-gradient(180deg,var(--gold),var(--rose-deep));height:22%;opacity:.45}
   body.is-playing .eq i{opacity:1;animation:eq .9s ease-in-out infinite alternate}
   .eq i:nth-child(2n){animation-delay:.15s}.eq i:nth-child(3n){animation-delay:.3s}.eq i:nth-child(4n){animation-delay:.45s}.eq i:nth-child(5n){animation-delay:.6s}
   @keyframes eq{from{height:14%}to{height:100%}}
-  .player-note{margin-top:14px;font-family:"Noto Sans SC",sans-serif;font-size:12px;line-height:1.8;color:var(--ink-faint);letter-spacing:.06em}
-  .player-note code{color:var(--rose-soft);background:rgba(255,143,179,.12);padding:1px 7px;border-radius:6px;font-size:11px}
-  audio{width:100%;margin-top:14px;height:40px}
-  .status{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--gold);letter-spacing:.14em;min-height:18px;margin-top:8px}
+  audio{display:none}
+  .status{font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--gold);letter-spacing:.14em;min-height:17px;margin-top:5px}
 
-  /* ---------- lyrics ---------- */
-  .lyrics{max-width:700px;margin:64px auto 0;padding:0 4px}
-  .stanza{margin:0 0 46px;position:relative}
-  .stanza-tag{
-    display:flex;align-items:center;gap:14px;margin-bottom:20px;
-    font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.4em;color:var(--ink-faint);
+  /* ---------- synced lyric stage (one line at a time) ---------- */
+  .lyrics-in{
+    margin-top:14px;padding:11px 8px 0;text-align:center;
+    border-top:1px solid var(--line);
+    min-height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   }
-  .stanza-tag::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,143,179,.35),transparent)}
-  .stanza.chorus .stanza-tag{color:var(--rose)}
-  .line{
-    margin:0;padding:3px 10px;text-align:center;
-    font-size:clamp(17px,3.4vw,20px);line-height:2.15;letter-spacing:.14em;color:var(--ink);
-    text-shadow:0 1px 8px rgba(0,0,0,.65);
-    opacity:0;transform:translateY(16px);filter:blur(3px);
-    transition:opacity .8s ease,transform .8s ease,filter .8s ease;
-    border-radius:8px;
+  .sync-side{
+    font-size:clamp(12px,2vw,14px);letter-spacing:.16em;color:var(--ink-faint);
+    min-height:1.6em;line-height:1.6;opacity:.55;transition:opacity .5s ease;
+    white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;
   }
-  .line.in{opacity:1;transform:none;filter:none}
-  .line:hover{background:rgba(255,143,179,.07)}
-  .line.hook{
-    font-size:clamp(20px,4.4vw,25px);font-weight:900;letter-spacing:.2em;color:#fff;padding:8px 10px;
-    text-shadow:0 0 16px rgba(255,120,165,.75),0 0 44px rgba(255,92,143,.35);
+  .sync-cur{
+    position:relative;display:inline-block;max-width:100%;
+    font-family:"Ma Shan Zheng","Noto Serif SC",serif;font-weight:400;
+    font-size:clamp(19px,3.6vw,27px);line-height:1.3;letter-spacing:.07em;
+    white-space:nowrap;
   }
-  .line.hook::before,.line.hook::after{content:"♪";font-size:.62em;color:var(--rose);vertical-align:.35em;margin:0 .5em;opacity:.85}
-  .line.soft{color:var(--rose-soft)}
-  .line.gold{
-    font-size:clamp(19px,4vw,23px);font-weight:900;letter-spacing:.18em;color:var(--gold);
-    text-shadow:0 0 18px rgba(255,210,130,.55),0 2px 10px rgba(0,0,0,.6);
+  .sync-cur .lyr-base{color:rgba(246,236,236,.30);text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .sync-cur .lyr-fill{
+    position:absolute;left:0;top:0;width:0%;overflow:hidden;white-space:nowrap;
+    background:linear-gradient(92deg,var(--rose) 0%,var(--gold) 55%,var(--cyan) 105%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 14px rgba(255,120,165,.55)) drop-shadow(0 2px 8px rgba(0,0,0,.45));
   }
-  .stanza.chorus{
-    background:linear-gradient(180deg, rgba(255,92,143,.07), rgba(255,92,143,.02));
-    border:1px solid rgba(255,143,179,.16);border-radius:20px;padding:26px 10px 18px;
-    box-shadow:inset 0 0 60px rgba(255,92,143,.05);
-  }
-  .stanza.chorus .stanza-tag{padding:0 16px}
-  .stanza.chorus .stanza-tag::after{background:linear-gradient(90deg,rgba(255,143,179,.5),transparent)}
+  .sync-cur.swap{animation:lyrIn .55s cubic-bezier(.2,.8,.3,1)}
+  @keyframes lyrIn{0%{opacity:0;transform:translateY(16px) scale(.965);filter:blur(5px)}100%{opacity:1;transform:none;filter:none}}
+  .sync-cur.idle .lyr-base{color:rgba(255,194,212,.65);animation:idlePulse 1.6s ease-in-out infinite}
+  @keyframes idlePulse{0%,100%{opacity:.45}50%{opacity:1}}
+  .sync-hint{font-family:"Noto Sans SC",sans-serif;font-size:10px;letter-spacing:.3em;color:var(--ink-faint)}
 
   /* floating notes */
   .notes{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
@@ -208,61 +248,86 @@
   }
 
   /* ---------- footer ---------- */
-  footer{text-align:center;padding:26px 0 64px;position:relative;z-index:2}
+  footer{text-align:center;padding:18px 0 34px;position:relative;z-index:2}
   .sign{
     display:inline-block;padding:11px 30px;border:1px solid rgba(255,154,184,.5);border-radius:99px;
     font-size:13px;letter-spacing:.42em;color:var(--rose-soft);background:rgba(18,10,28,.6);
     box-shadow:0 0 26px rgba(255,92,143,.22), inset 0 0 18px rgba(255,92,143,.08);
   }
   .foot-credit{margin-top:22px;font-family:"Noto Sans SC",sans-serif;font-size:12px;letter-spacing:.3em;color:var(--ink-faint)}
-  .to-top{
-    display:inline-flex;align-items:center;justify-content:center;margin-top:26px;width:46px;height:46px;border-radius:50%;
-    border:1px solid var(--card-border);background:rgba(20,13,34,.6);color:var(--rose-soft);text-decoration:none;font-size:17px;
-  }
 
   @media (max-width:760px){
     .hero{padding-top:46px}
-    .stage{grid-template-columns:1fr;padding:28px 20px 30px;gap:26px}
+    .stage{padding:18px 16px 12px}
+    .stage-main{grid-template-columns:1fr;gap:26px}
     .player{text-align:center}
-    .player h2{font-size:23px}
+    .player h2{font-size:27px}
     .controls{justify-content:center}
     .eq{justify-content:center}
     .moon{width:52px;height:52px;top:3vh;right:5vw}
-    .vinyl-wrap{width:236px;height:236px}
-    .vinyl-label{width:88px;height:88px}
+    .vinyl-wrap{width:176px;height:176px}
+    .vinyl-label{width:66px;height:66px}
     .vinyl-label span{font-size:13px}
-    .tonearm{width:92px;height:92px}
+    .tonearm{width:74px;height:74px}
+    .lyrics-in{padding:9px 4px 0;min-height:64px}
+    .sync-cur{white-space:normal}
+    .sync-cur .lyr-fill{white-space:normal}
   }
   @media (prefers-reduced-motion: reduce){
     .vinyl,.aurora i,.notes span,.vinyl-glow{animation:none !important}
-    .line{transition:none;opacity:1;transform:none;filter:none}
     html{scroll-behavior:auto}
   }
 </style>
 </head>
 <body>
 
-<canvas id="stars" aria-hidden="true"></canvas>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="moon" aria-hidden="true"></div>
+<div class="sky" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i></div>
+<div class="sun" aria-hidden="true"></div>
+<svg class="bridge" viewBox="0 0 1200 260" fill="none" aria-hidden="true">
+  <path d="M0 208 Q 220 168 430 196 T 860 190 T 1200 200 V260 H0 Z" fill="#4a2c50" opacity=".45"/>
+  <rect x="252" y="128" width="15" height="86" fill="#241729"/>
+  <rect x="592" y="128" width="15" height="92" fill="#241729"/>
+  <rect x="932" y="128" width="15" height="86" fill="#241729"/>
+  <path d="M60 196 Q600 128 1140 196 L1140 216 Q600 152 60 216 Z" fill="#241729"/>
+  <rect x="238" y="74" width="724" height="56" fill="#2a1a30"/>
+  <path d="M218 76 L600 26 L982 76 L950 76 L600 34 L250 76 Z" fill="#1d1224"/>
+  <g fill="#ffd98a" opacity=".9">
+    <rect x="286" y="90" width="34" height="24" rx="2"/><rect x="352" y="90" width="34" height="24" rx="2"/>
+    <rect x="418" y="90" width="34" height="24" rx="2"/><rect x="484" y="90" width="34" height="24" rx="2"/>
+    <rect x="550" y="90" width="34" height="24" rx="2"/><rect x="616" y="90" width="34" height="24" rx="2"/>
+    <rect x="682" y="90" width="34" height="24" rx="2"/><rect x="748" y="90" width="34" height="24" rx="2"/>
+    <rect x="814" y="90" width="34" height="24" rx="2"/><rect x="880" y="90" width="34" height="24" rx="2"/>
+  </g>
+</svg>
+<div class="water" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
-<div class="notes" id="notes" aria-hidden="true"></div>
 <div id="progress" aria-hidden="true"></div>
 
 <div class="wrap">
 
   <header class="hero">
-    <div class="kicker">✦ Midnight Neon &amp; Melancholy ✦</div>
-    <h1>唱你<span class="accent">唱过</span>的歌</h1>
-    <p class="subtitle">「 混着沙哑与无处安放 · <b>全是我一个人的孤单</b> 」</p>
-    <div class="credits">词曲 / 演唱：你的名字</div>
+	  <!---  <div class="kicker">✦ Midnight Neon &amp; Melancholy ✦</div   ---->
+    <!-- 感想文字：把下面这段占位文字换成你自己的感想即可（可写多行） -->
+    <p class="thoughts" id="thoughts">
+		也送给一个男人 ：） 只要你有才有财高大帅，腹肌八块，那就值得上几段廊桥遗梦。你们说呢？不要像这首歌里，才只梦到了廊桥，就念念不忘。
+
+		廊桥遗梦
+
+		才高兼玉立，更挟万金全。
+		合得廊桥约，何妨几度缘。
+		莫随歌里客，才梦便缠绵。
+		历尽人间路，归来仍少年。
+	</p>
+	  <!--- <p class="subtitle" id="subtitle">「 我把喜欢藏进每一道波纹 · <b>你依然是我最温柔的等候</b> 」</p>
+    <div class="credits">演唱</div  ---->
   </header>
 
   <section class="stage" aria-label="播放器">
+   <div class="stage-main">
     <div class="vinyl-wrap" aria-hidden="true">
       <div class="vinyl-glow"></div>
       <div class="vinyl">
-        <div class="vinyl-label"><span>唱你唱过的歌</span><small>SIDE A · 33⅓</small></div>
+        <div class="vinyl-label"><span>廊桥遗梦</span><small>SIDE A · 33⅓</small></div>
         <div class="vinyl-hole"></div>
       </div>
       <div class="tonearm">
@@ -276,9 +341,8 @@
     </div>
 
     <div class="player">
-      <div class="now">NOW PLAYING · 黑胶唱片</div>
-      <h2>唱你唱过的歌</h2>
-      <div class="by">词曲 / 演唱：你的名字</div>
+      <h2>廊桥<span class="accent">遗梦</span></h2>
+      <div class="by">词曲：楚楚JOY 唱：星星</div>
 
       <div class="controls">
         <button class="play-btn" id="playBtn" type="button" aria-label="播放 / 暂停">
@@ -286,8 +350,8 @@
           <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h4v16h-4zM13.5 4h4v16h-4z"/></svg>
         </button>
         <div class="track-meta">
-          <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
-          <div class="times"><span id="tCur">0:00</span><span>音频待添加</span></div>
+          <div class="bar" id="bar" aria-hidden="true"><i id="barFill"></i></div>
+          <div class="times"><span id="tCur">0:00</span><span id="tTot">4:47</span></div>
         </div>
       </div>
 
@@ -296,90 +360,24 @@
       </div>
       <div class="status" id="status">唱针待落下 · 点播放键开始</div>
 
-      <!-- 音频占位：把 src 换成你的 MP3 直链即可播放 -->
-      <audio id="track" controls loop preload="none">
-        <source src="http://cdn.wenxuecity.net/upload/media/37/b8/7c/AhNNlIDP9558.mp3 " type="audio/mpeg">
+      <!-- 音频（隐藏）：MP3 直链已填好，播放由上方播放器控制 -->
+      <audio id="track" controls loop preload="auto" autoplay>
+        <source id="trackSrc" src="https://files.catbox.moe/e36f4f.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放。
       </audio>
-      <p class="player-note">音频地址先留空占位——把 MP3 直链填进上方播放器的 <code>src</code> 即可正式播放；在此之前，播放键会带动唱片与频谱做视觉演示。</p>
+    </div>
+   </div>
+
+    <div class="lyrics-in" aria-label="同步歌词">
+      <div class="sync-side" id="lyrPrev"></div>
+      <div class="sync-cur idle" id="lyrCur"><span class="lyr-base" id="lyrBase"></span><span class="lyr-fill" id="lyrFill" aria-hidden="true"></span></div>
+      <div class="sync-side" id="lyrNext"></div>
     </div>
   </section>
 
-  <main class="lyrics" id="lyrics">
-
-    <section class="stanza">
-      <div class="stanza-tag">主歌 · 一</div>
-      <p class="line">夜色推开半扇窗</p>
-      <p class="line">耳机里老旋律在响</p>
-      <p class="line">那是你留下的波长</p>
-      <p class="line soft">一遍遍 打湿了旧纸张</p>
-    </section>
-
-    <section class="stanza">
-      <div class="stanza-tag">主歌 · 二</div>
-      <p class="line">耳机里留着你的余香</p>
-      <p class="line">每一处呼吸都有余温回荡</p>
-      <p class="line">我试着学你当年的唱腔</p>
-      <p class="line">去撞击那堵思念的墙</p>
-      <p class="line">有些高音唱得太勉强</p>
-      <p class="line">混着沙哑与无处安放</p>
-      <p class="line">你当年唱的哪是歌</p>
-      <p class="line soft">分明是我停不了的执着</p>
-    </section>
-
-    <section class="stanza chorus">
-      <div class="stanza-tag">副歌 · CHORUS</div>
-      <p class="line hook">我唱着你唱过的歌</p>
-      <p class="line">一字一句都是折磨</p>
-      <p class="line">把悲伤当成功课</p>
-      <p class="line">把深情唱成寂寞</p>
-      <p class="line hook">我唱着你唱过的歌</p>
-      <p class="line">越唱越觉得你没走远</p>
-      <p class="line">躲在音符后面冷眼看我沦陷</p>
-      <p class="line">那些句句入心的呐喊</p>
-      <p class="line">全是我一个人的孤单</p>
-      <p class="line soft">无人应答 却甘愿深陷</p>
-    </section>
-
-    <section class="stanza">
-      <div class="stanza-tag">桥段 · BRIDGE</div>
-      <p class="line">真假声交错的瞬间</p>
-      <p class="line">以为你就在我对面</p>
-      <p class="line">歌声停下只剩长夜漫漫</p>
-      <p class="line">和被我哭湿的枕边</p>
-    </section>
-
-    <section class="stanza chorus">
-      <div class="stanza-tag">副歌 · CHORUS</div>
-      <p class="line hook">我唱着你唱过的歌</p>
-      <p class="line">一字一句都是折磨</p>
-      <p class="line">把悲伤当成功课</p>
-      <p class="line">在没有你的调子里 反复揣摩</p>
-      <p class="line">把深情唱成寂寞</p>
-      <p class="line hook">我唱着你唱过的歌</p>
-      <p class="line">越唱越觉得你没走远</p>
-      <p class="line">躲在音符后面冷眼看我沦陷</p>
-      <p class="line">那些句句入心的呐喊</p>
-      <p class="line">全是我一个人的孤单</p>
-      <p class="line soft">无人应答 却甘愿深陷</p>
-    </section>
-
-    <section class="stanza">
-      <div class="stanza-tag">尾声 · OUTRO</div>
-      <p class="line">月光轻轻落在窗前</p>
-      <p class="line">我把思念唱成温柔的诗篇</p>
-      <p class="line">唱你唱过的歌</p>
-      <p class="line">唱给远方的你听见</p>
-      <p class="line gold">唱你唱过的歌 唱过春花又一年</p>
-    </section>
-
-  </main>
-
   <footer>
-    <span class="sign">✦ 躲在音符后面 · 甘愿深陷 ✦</span>
-    <div class="foot-credit">唱你唱过的歌 · 词曲 / 演唱：你的名字</div>
-    <br>
-    <a class="to-top" href="#lyrics" aria-label="回到歌词顶部" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a>
+    <span class="sign">✦ 廊桥很长 · 河水很柔 ✦</span>
+    <div class="foot-credit">廊桥遗梦</div>
   </footer>
 
 </div>
@@ -389,156 +387,158 @@
   "use strict";
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---- starfield canvas ---- */
-  var canvas = document.getElementById("stars");
-  var ctx = canvas.getContext("2d");
-  var stars = [], meteors = [], W = 0, H = 0, raf = null;
+  /* ---- timed lyrics: [startSec, endSec, text] ---- */
+  var LYRICS = [
+    [27.84, 35.34, "廊桥边的风吹过衣袖"],
+    [35.34, 42.60, "吹皱河面也吹乱心头"],
+    [42.60, 49.12, "晚霞停在你眼睛里头"],
+    [49.12, 57.34, "像一句话始终没开口"],
+    [57.34, 64.12, "我看波浪一层一层走"],
+    [64.86, 71.54, "带着月光流向下游"],
+    [71.54, 78.12, "你站在桥的那一头"],
+    [78.12, 86.60, "离我不远却想很久"],
+    [86.60, 93.12, "如果河水能够听我说"],
+    [93.70, 101.48, "它会不会轻轻告诉你呢"],
+    [101.48, 108.48, "我把喜欢藏进每一道波纹"],
+    [109.10, 116.66, "藏进黄昏落下的余温"],
+    [116.66, 123.54, "藏进桥边摇晃的灯"],
+    [123.54, 130.28, "和不敢靠近的眼神"],
+    [130.28, 137.28, "我把思念交给缓缓的河流"],
+    [138.10, 145.28, "它向前走，我在停留"],
+    [145.80, 152.54, "直到月色漫过桥头"],
+    [152.54, 160.78, "你依然是我最温柔的等候"],
+    [188.86, 196.24, "桥下的水映着心动"],
+    [196.24, 202.86, "像散落人间的温柔"],
+    [202.86, 209.92, "我想陪你看四季深浅"],
+    [209.92, 212.52, "看河岸开花"],
+    [212.52, 217.72, "直到白头"],
+    [217.72, 225.48, "我把喜欢藏进每一道波纹"],
+    [225.48, 232.82, "藏进黄昏落下的余温"],
+    [232.82, 239.86, "藏进桥边摇晃的灯"],
+    [239.86, 246.86, "和不敢靠近的眼神"],
+    [246.86, 253.86, "若有一天你回头看我"],
+    [254.52, 261.22, "请记得那个黄昏时候"],
+    [261.86, 268.76, "廊桥很长，河水很柔"],
+    [268.76, 278.72, "而我的心事从未飘走"]
+  ];
+  var SONG_LEN = 287; /* seconds, used until real audio metadata loads */
 
-  function resize(){
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-    stars = [];
-    var n = Math.min(220, Math.floor(W * H / 6500));
-    for (var i = 0; i < n; i++){
-      stars.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() * 1.4 + 0.3,
-        p: Math.random() * Math.PI * 2,
-        s: 0.008 + Math.random() * 0.02,
-        hue: Math.random() < 0.16 ? "255,190,210" : (Math.random() < 0.12 ? "170,215,255" : "255,255,255")
-      });
-    }
-  }
-  function spawnMeteor(){
-    meteors.push({
-      x: Math.random() * W * 0.7 + W * 0.2,
-      y: Math.random() * H * 0.25,
-      vx: -(5 + Math.random() * 4),
-      vy: 3 + Math.random() * 2.4,
-      life: 1
-    });
-  }
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-    var i, st;
-    for (i = 0; i < stars.length; i++){
-      st = stars[i];
-      st.p += st.s;
-      var a = 0.35 + Math.abs(Math.sin(st.p)) * 0.65;
-      ctx.beginPath();
-      ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(" + st.hue + "," + a.toFixed(3) + ")";
-      ctx.shadowBlur = st.r > 1.1 ? 8 : 0;
-      ctx.shadowColor = "rgba(" + st.hue + ",.9)";
-      ctx.fill();
-    }
-    ctx.shadowBlur = 0;
-    for (i = meteors.length - 1; i >= 0; i--){
-      var m = meteors[i];
-      m.x += m.vx; m.y += m.vy; m.life -= 0.012;
-      if (m.life <= 0 || m.x < -80 || m.y > H + 80){ meteors.splice(i, 1); continue; }
-      var grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 9, m.y - m.vy * 9);
-      grad.addColorStop(0, "rgba(255,235,245," + (0.9 * m.life).toFixed(3) + ")");
-      grad.addColorStop(1, "rgba(255,150,190,0)");
-      ctx.strokeStyle = grad; ctx.lineWidth = 2; ctx.lineCap = "round";
-      ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(m.x - m.vx * 9, m.y - m.vy * 9); ctx.stroke();
-    }
-    if (Math.random() < 0.004 && meteors.length < 2) spawnMeteor();
-    raf = requestAnimationFrame(draw);
-  }
-  resize();
-  window.addEventListener("resize", resize);
-  if (!reduced){ raf = requestAnimationFrame(draw); }
-  else {
-    ctx.clearRect(0,0,W,H);
-    for (var j = 0; j < stars.length; j++){
-      ctx.beginPath(); ctx.arc(stars[j].x, stars[j].y, stars[j].r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(255,255,255,.7)"; ctx.fill();
-    }
-  }
-  document.addEventListener("visibilitychange", function(){
-    if (reduced) return;
-    if (document.hidden){ if (raf) cancelAnimationFrame(raf); raf = null; }
-    else if (!raf){ raf = requestAnimationFrame(draw); }
-  });
-
-  /* ---- floating notes ---- */
-  var notesBox = document.getElementById("notes");
-  if (!reduced){
-    var glyphs = ["♪", "♫", "♩", "♬"];
-    for (var k = 0; k < 9; k++){
-      var s = document.createElement("span");
-      s.textContent = glyphs[k % glyphs.length];
-      s.style.left = (4 + Math.random() * 92) + "vw";
-      s.style.fontSize = (14 + Math.random() * 16) + "px";
-      s.style.animationDuration = (16 + Math.random() * 18) + "s";
-      s.style.animationDelay = (-Math.random() * 24) + "s";
-      notesBox.appendChild(s);
-    }
-  }
-
-  /* ---- lyric lines reveal on scroll ---- */
-  var lines = document.querySelectorAll(".line");
-  if ("IntersectionObserver" in window && !reduced){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting){
-          var el = e.target;
-          var idx = Array.prototype.indexOf.call(el.parentNode.children, el);
-          el.style.transitionDelay = Math.min(idx * 45, 270) + "ms";
-          el.classList.add("in");
-          io.unobserve(el);
-        }
-      });
-    }, { threshold: 0.35, rootMargin: "0px 0px -6% 0px" });
-    lines.forEach(function(l){ io.observe(l); });
-  } else {
-    lines.forEach(function(l){ l.classList.add("in"); });
-  }
-
-  /* ---- reading progress ---- */
-  var prog = document.getElementById("progress");
-  function onScroll(){
-    var h = document.documentElement;
-    var max = h.scrollHeight - h.clientHeight;
-    prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  /* ---- player (placeholder-aware) ---- */
+  /* ---- player + lyric sync ---- */
   var btn = document.getElementById("playBtn");
   var status = document.getElementById("status");
   var audio = document.getElementById("track");
+  var srcEl = document.getElementById("trackSrc");
   var tCur = document.getElementById("tCur");
-  var playing = false, timer = null, sec = 0;
+  var tTot = document.getElementById("tTot");
+  var bar = document.getElementById("bar");
+  var barFill = document.getElementById("barFill");
+  var prog = document.getElementById("progress");
+  var lyrCur = document.getElementById("lyrCur");
+  var lyrBase = document.getElementById("lyrBase");
+  var lyrFill = document.getElementById("lyrFill");
+  var lyrPrev = document.getElementById("lyrPrev");
+  var lyrNext = document.getElementById("lyrNext");
 
-  function fmt(s){ return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
-  function setPlaying(on){
-    playing = on;
-    document.body.classList.toggle("is-playing", on);
-    btn.setAttribute("aria-label", on ? "暂停" : "播放");
-    if (on){
-      status.textContent = "唱针已落下 · 视觉演示中（音频待添加）";
-      timer = setInterval(function(){ sec++; tCur.textContent = fmt(sec); }, 1000);
+  var hasSrc = !!(srcEl && (srcEl.getAttribute("src") || "").trim());
+  var demoPlaying = false, demoSec = 0, demoStamp = null;
+  var curIdx = -2; /* -2 = unset, -1 = gap/intro */
+
+  function fmt(s){ s = Math.max(0, Math.floor(s)); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
+  function nowSec(){
+    if (hasSrc){ return audio.currentTime || 0; }
+    if (demoPlaying && demoStamp !== null){
+      return demoSec + (performance.now() - demoStamp) / 1000;
+    }
+    return demoSec;
+  }
+  function totalSec(){
+    if (hasSrc && audio.duration && isFinite(audio.duration)) return audio.duration;
+    return SONG_LEN;
+  }
+  function findLine(t){
+    for (var i = 0; i < LYRICS.length; i++){
+      if (t >= LYRICS[i][0] && t < LYRICS[i][1]) return i;
+      if (t < LYRICS[i][0]) return -1;
+    }
+    return -1;
+  }
+  function setLine(idx, t){
+    if (idx !== curIdx){
+      curIdx = idx;
+      var text, prev = "", next = "";
+      if (idx >= 0){
+        text = LYRICS[idx][2];
+        prev = idx > 0 ? LYRICS[idx - 1][2] : "";
+        next = idx < LYRICS.length - 1 ? LYRICS[idx + 1][2] : "";
+        lyrCur.classList.remove("idle");
+      } else {
+        text = "";
+        var upcoming = -1;
+        for (var i = 0; i < LYRICS.length; i++){ if (t < LYRICS[i][0]){ upcoming = i; break; } }
+        next = upcoming >= 0 ? LYRICS[upcoming][2] : "";
+        prev = (upcoming > 0) ? LYRICS[upcoming - 1][2] : (LYRICS.length && t >= LYRICS[LYRICS.length-1][1] ? LYRICS[LYRICS.length-1][2] : "");
+        lyrCur.classList.add("idle");
+      }
+      lyrBase.textContent = text;
+      lyrFill.textContent = text;
+      lyrPrev.textContent = prev;
+      lyrNext.textContent = next;
+      lyrCur.classList.remove("swap");
+      void lyrCur.offsetWidth;
+      lyrCur.classList.add("swap");
+    }
+    if (idx >= 0){
+      var p = (t - LYRICS[idx][0]) / Math.max(0.1, LYRICS[idx][1] - LYRICS[idx][0]);
+      lyrFill.style.width = Math.min(100, Math.max(0, p * 100)) + "%";
     } else {
-      status.textContent = "已暂停 · 唱针抬起";
-      clearInterval(timer); timer = null;
+      lyrFill.style.width = "0%";
     }
   }
+  function tick(){
+    var t = nowSec(), tot = totalSec();
+    if (!hasSrc && demoPlaying && t >= tot){ demoSec = 0; demoStamp = performance.now(); t = 0; }
+    tCur.textContent = fmt(t);
+    tTot.textContent = fmt(tot);
+    var pct = tot > 0 ? Math.min(100, (t / tot) * 100) : 0;
+    barFill.style.width = pct + "%";
+    prog.style.width = pct + "%";
+    setLine(findLine(t), t);
+  }
+  setInterval(tick, 100);
+  tick();
+
+  function setPlayingUI(on){
+    document.body.classList.toggle("is-playing", on);
+    btn.setAttribute("aria-label", on ? "暂停" : "播放");
+  }
   btn.addEventListener("click", function(){
-    var src = audio.currentSrc || audio.getAttribute("src") || "";
-    if (src){
+    if (hasSrc){
       if (audio.paused){ audio.play(); } else { audio.pause(); }
       return;
     }
-    setPlaying(!playing);
+    if (demoPlaying){
+      demoSec = nowSec(); demoPlaying = false; demoStamp = null;
+      setPlayingUI(false);
+      status.textContent = "已暂停 · 唱针抬起";
+    } else {
+      demoPlaying = true; demoStamp = performance.now();
+      setPlayingUI(true);
+      status.textContent = "唱针已落下 · 视觉演示中";
+    }
+    tick();
   });
-  audio.addEventListener("play", function(){ document.body.classList.add("is-playing"); status.textContent = "正在播放 · 唱你唱过的歌"; });
-  audio.addEventListener("pause", function(){ document.body.classList.remove("is-playing"); status.textContent = "已暂停 · 唱针抬起"; });
-  audio.addEventListener("timeupdate", function(){
-    if (audio.duration && isFinite(audio.duration)){ tCur.textContent = fmt(Math.floor(audio.currentTime)); }
+  audio.addEventListener("play", function(){ setPlayingUI(true); status.textContent = "正在播放 · 廊桥遗梦"; });
+  audio.addEventListener("pause", function(){ setPlayingUI(false); status.textContent = "已暂停 · 唱针抬起"; });
+  audio.addEventListener("ended", function(){ setPlayingUI(false); status.textContent = "播放结束"; });
+  audio.addEventListener("loadedmetadata", function(){ tick(); });
+
+  bar.addEventListener("click", function(ev){
+    var r = bar.getBoundingClientRect();
+    var ratio = (ev.clientX - r.left) / Math.max(1, r.width);
+    var target = ratio * totalSec();
+    if (hasSrc){ audio.currentTime = target; }
+    else { demoSec = target; if (demoPlaying) demoStamp = performance.now(); }
+    curIdx = -2; tick();
   });
 })();
 </script>
