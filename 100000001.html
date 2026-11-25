@@ -106,14 +106,14 @@
   .cloud.c3{width:28vw;height:6vh;left:16vw;top:31vh;background:radial-gradient(ellipse at center,rgba(255,205,150,.4),transparent 70%);animation:cloudDrift 44s ease-in-out infinite alternate}
   @keyframes cloudDrift{from{transform:translateX(0)}to{transform:translateX(4.5vw)}}
   .sun{
-    position:fixed;left:50%;bottom:calc(26vh - 36px);transform:translateX(-50%);
+    position:absolute;left:50%;bottom:56px;transform:translateX(-50%);
     width:96px;height:96px;border-radius:50%;z-index:0;pointer-events:none;
     background:radial-gradient(circle at 50% 42%,#fff6cf,#ffdc8f 52%,#ffae62 88%);
     box-shadow:0 0 44px 16px rgba(255,196,110,.5),0 0 130px 60px rgba(255,160,90,.22);
   }
-  .bridge{position:fixed;left:50%;bottom:calc(26vh - 8px);transform:translateX(-50%);width:min(980px,98vw);z-index:0;pointer-events:none}
+  .bridge{position:absolute;left:50%;bottom:84px;transform:translateX(-50%);width:min(980px,98vw);z-index:0;pointer-events:none}
   .water{
-    position:fixed;left:0;right:0;bottom:0;height:26vh;z-index:0;pointer-events:none;overflow:hidden;
+    position:absolute;left:0;right:0;bottom:0;height:92px;pointer-events:none;overflow:hidden;
     background:linear-gradient(180deg,#c97a63 0%,#7c5570 22%,#44557f 52%,#27365e 100%);
   }
   .water::before{
@@ -129,6 +129,7 @@
     filter:blur(7px);animation:sunpath 5.5s ease-in-out infinite alternate;
   }
   @keyframes sunpath{from{opacity:.65}to{opacity:1}}
+  .scene{position:relative;height:238px;margin:26px auto 0;z-index:2}
 
   /* ---------- stage: vinyl + player ---------- */
   .stage{
@@ -248,7 +249,7 @@
   }
 
   /* ---------- footer ---------- */
-  footer{text-align:center;padding:18px 0 34px;position:relative;z-index:2}
+  footer{position:absolute;left:0;right:0;bottom:2px;z-index:3;text-align:center;padding:0}
   .sign{
     display:inline-block;padding:11px 30px;border:1px solid rgba(255,154,184,.5);border-radius:99px;
     font-size:13px;letter-spacing:.42em;color:var(--rose-soft);background:rgba(18,10,28,.6);
@@ -282,24 +283,6 @@
 <body>
 
 <div class="sky" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i></div>
-<div class="sun" aria-hidden="true"></div>
-<svg class="bridge" viewBox="0 0 1200 260" fill="none" aria-hidden="true">
-  <path d="M0 208 Q 220 168 430 196 T 860 190 T 1200 200 V260 H0 Z" fill="#4a2c50" opacity=".45"/>
-  <rect x="252" y="128" width="15" height="86" fill="#241729"/>
-  <rect x="592" y="128" width="15" height="92" fill="#241729"/>
-  <rect x="932" y="128" width="15" height="86" fill="#241729"/>
-  <path d="M60 196 Q600 128 1140 196 L1140 216 Q600 152 60 216 Z" fill="#241729"/>
-  <rect x="238" y="74" width="724" height="56" fill="#2a1a30"/>
-  <path d="M218 76 L600 26 L982 76 L950 76 L600 34 L250 76 Z" fill="#1d1224"/>
-  <g fill="#ffd98a" opacity=".9">
-    <rect x="286" y="90" width="34" height="24" rx="2"/><rect x="352" y="90" width="34" height="24" rx="2"/>
-    <rect x="418" y="90" width="34" height="24" rx="2"/><rect x="484" y="90" width="34" height="24" rx="2"/>
-    <rect x="550" y="90" width="34" height="24" rx="2"/><rect x="616" y="90" width="34" height="24" rx="2"/>
-    <rect x="682" y="90" width="34" height="24" rx="2"/><rect x="748" y="90" width="34" height="24" rx="2"/>
-    <rect x="814" y="90" width="34" height="24" rx="2"/><rect x="880" y="90" width="34" height="24" rx="2"/>
-  </g>
-</svg>
-<div class="water" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div id="progress" aria-hidden="true"></div>
 
@@ -309,7 +292,14 @@
 	  <!---  <div class="kicker">✦ Midnight Neon &amp; Melancholy ✦</div   ---->
     <!-- 感想文字：把下面这段占位文字换成你自己的感想即可（可写多行） -->
     <p class="thoughts" id="thoughts">
-		
+		小黄哥哥小黄姐姐：你高大帅有才，我白富美腹肌八块，人生就该应得几段廊桥遗梦。大家说呢？
+
+		廊桥遗梦
+
+		才高兼玉立，更挟万金全。
+		合得廊桥约，何妨几度缘。
+		莫随歌里客，才梦便缠绵。
+		挥袖春秋去，痴心如少年。
 	</p>
 	  <!--- <p class="subtitle" id="subtitle">「 我把喜欢藏进每一道波纹 · <b>你依然是我最温柔的等候</b> 」</p>
     <div class="credits">演唱</div  ---->
@@ -335,7 +325,7 @@
 
     <div class="player">
       <h2>廊桥<span class="accent">遗梦</span></h2>
-      <div class="by">词曲：楚楚JOY 唱：星星</div>
+      <div class="by">词曲唱：楚楚JOY 夜星</div>
 
       <div class="controls">
         <button class="play-btn" id="playBtn" type="button" aria-label="播放 / 暂停">
@@ -354,7 +344,7 @@
       <div class="status" id="status">唱针待落下 · 点播放键开始</div>
 
       <!-- 音频（隐藏）：MP3 直链已填好，播放由上方播放器控制 -->
-      <audio id="track" controls loop preload="auto" autoplay>
+      <audio id="track" loop preload="auto" autoplay>
         <source id="trackSrc" src="https://files.catbox.moe/e36f4f.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放。
       </audio>
@@ -368,10 +358,30 @@
     </div>
   </section>
 
+  <section class="scene" aria-label="晚霞廊桥">
+<div class="sun" aria-hidden="true"></div>
+<svg class="bridge" viewBox="0 0 1200 260" fill="none" aria-hidden="true">
+  <path d="M0 208 Q 220 168 430 196 T 860 190 T 1200 200 V260 H0 Z" fill="#4a2c50" opacity=".45"/>
+  <rect x="252" y="128" width="15" height="86" fill="#241729"/>
+  <rect x="592" y="128" width="15" height="92" fill="#241729"/>
+  <rect x="932" y="128" width="15" height="86" fill="#241729"/>
+  <path d="M60 196 Q600 128 1140 196 L1140 216 Q600 152 60 216 Z" fill="#241729"/>
+  <rect x="238" y="74" width="724" height="56" fill="#2a1a30"/>
+  <path d="M218 76 L600 26 L982 76 L950 76 L600 34 L250 76 Z" fill="#1d1224"/>
+  <g fill="#ffd98a" opacity=".9">
+    <rect x="286" y="90" width="34" height="24" rx="2"/><rect x="352" y="90" width="34" height="24" rx="2"/>
+    <rect x="418" y="90" width="34" height="24" rx="2"/><rect x="484" y="90" width="34" height="24" rx="2"/>
+    <rect x="550" y="90" width="34" height="24" rx="2"/><rect x="616" y="90" width="34" height="24" rx="2"/>
+    <rect x="682" y="90" width="34" height="24" rx="2"/><rect x="748" y="90" width="34" height="24" rx="2"/>
+    <rect x="814" y="90" width="34" height="24" rx="2"/><rect x="880" y="90" width="34" height="24" rx="2"/>
+  </g>
+</svg>
+<div class="water" aria-hidden="true"></div>
   <footer>
     <span class="sign">✦ 廊桥很长 · 河水很柔 ✦</span>
     <div class="foot-credit">廊桥遗梦</div>
   </footer>
+  </section>
 
 </div>
 
@@ -389,7 +399,7 @@
     [57.34, 64.12, "我看波浪一层一层走"],
     [64.86, 71.54, "带着月光流向下游"],
     [71.54, 78.12, "你站在桥的那一头"],
-    [78.12, 86.60, "离我不远却像很久"],
+    [78.12, 86.60, "离我不远却想很久"],
     [86.60, 93.12, "如果河水能够听我说"],
     [93.70, 101.48, "它会不会轻轻告诉你呢"],
     [101.48, 108.48, "我把喜欢藏进每一道波纹"],
@@ -524,6 +534,20 @@
   audio.addEventListener("pause", function(){ setPlayingUI(false); status.textContent = "已暂停 · 唱针抬起"; });
   audio.addEventListener("ended", function(){ setPlayingUI(false); status.textContent = "播放结束"; });
   audio.addEventListener("loadedmetadata", function(){ tick(); });
+  /* ---- autoplay: try on load; if blocked, the first tap/click anywhere starts it (once) ---- */
+  var autoDone = false;
+  audio.addEventListener("play", function(){ autoDone = true; });
+  function tryAutoplay(){
+    if (!hasSrc || autoDone) return;
+    var pr = audio.play();
+    if (pr && pr.catch) pr.catch(function(){ status.textContent = "唱针待落下 · 点页面任意处开始播放"; });
+  }
+  window.addEventListener("load", tryAutoplay);
+  document.addEventListener("pointerdown", function(ev){
+    if (autoDone || !audio.paused) return;
+    if (ev.target.closest && ev.target.closest("#playBtn, audio, #bar")) return;
+    tryAutoplay();
+  });
 
   bar.addEventListener("click", function(ev){
     var r = bar.getBoundingClientRect();
